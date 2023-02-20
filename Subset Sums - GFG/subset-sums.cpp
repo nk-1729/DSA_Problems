@@ -5,24 +5,23 @@ using namespace std;
 // } Driver Code Ends
 class Solution
 {
-    void func(int idx,int n,vector<int>&ans,int sum,vector<int>&arr)
-    {
-        if(idx==n)
-        {
+public:
+    void func(int idx,int sum,int n,vector<int>&arr,vector<int>&ans){
+        if(idx>=n){
             ans.push_back(sum);
             return;
         }
-        sum+=arr[idx];
-        func(idx+1,n,ans,sum,arr);
-        sum-=arr[idx];
-        func(idx+1,n,ans,sum,arr);
+        sum +=arr[idx];
+        func(idx+1,sum,n,arr,ans);
+        sum -=arr[idx];
+        func(idx+1,sum,n,arr,ans);
+        
     }
-    
-public:
     vector<int> subsetSums(vector<int> arr, int N)
     {
         vector<int>ans;
-        func(0,N,ans,0,arr);
+        int n=arr.size();
+        func(0,0,n,arr,ans);
         sort(ans.begin(),ans.end());
         return ans;
     }
