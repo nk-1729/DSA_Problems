@@ -3,6 +3,8 @@
 using namespace std; 
 
 // } Driver Code Ends
+
+//Subset Sum 1
 class Solution
 {
 public:
@@ -11,9 +13,7 @@ public:
             ans.push_back(sum);
             return;
         }
-        sum +=arr[idx];
-        func(idx+1,sum,n,arr,ans);
-        sum -=arr[idx];
+        func(idx+1,sum+arr[idx],n,arr,ans);
         func(idx+1,sum,n,arr,ans);
         
     }
